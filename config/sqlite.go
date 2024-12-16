@@ -33,6 +33,7 @@ func InitializeSQLite() (*sql.DB, error) {
 
 	// Create db sqlite and connect
 	db, err := sql.Open("sqlite", "file:./db/opportunities.db")
+	logger.InfoF("db aberto")
 
 	if err != nil {
 		logger.ErrF("sqlite opening error: %v", err)
@@ -60,6 +61,6 @@ func InitializeSQLite() (*sql.DB, error) {
 		logger.ErrF("sqlite create table error: %v", err)
 		return nil, err
 	}
-	defer db.Close()
+
 	return db, nil
 }
