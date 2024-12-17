@@ -1,18 +1,12 @@
 package openings
 
 import (
-	"database/sql"
 	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/victorlui/gopportunities/config"
 	"github.com/victorlui/gopportunities/schemas"
-)
-
-var (
-	logger *config.Logger
-	db     *sql.DB
 )
 
 func CreateOpeningHandler(ctx *gin.Context) {
