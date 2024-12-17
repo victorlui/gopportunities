@@ -3,5 +3,108 @@
     "info": {
         "contact": {}
     },
-    "paths": {}
+    "paths": {
+        "/opening": {
+            "post": {
+                "description": "Create a new job opening",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Openings"
+                ],
+                "summary": "Create opening",
+                "parameters": [
+                    {
+                        "description": "Request body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/openings.CreateOpeningResponse"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/openings.CreateOpeningResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/openings.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/openings.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "openings.CreateOpeningResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.OpeningResponseSwagger"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "openings.ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "errorCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "schemas.OpeningResponseSwagger": {
+            "type": "object",
+            "properties": {
+                "company": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "remote": {
+                    "type": "boolean"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "salary": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        }
+    }
 }

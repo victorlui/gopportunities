@@ -1,4 +1,70 @@
+definitions:
+  openings.CreateOpeningResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.OpeningResponseSwagger'
+      message:
+        type: string
+    type: object
+  openings.ErrorResponse:
+    properties:
+      errorCode:
+        type: string
+      message:
+        type: string
+    type: object
+  schemas.OpeningResponseSwagger:
+    properties:
+      company:
+        type: string
+      createdAt:
+        type: string
+      id:
+        type: integer
+      link:
+        type: string
+      location:
+        type: string
+      remote:
+        type: boolean
+      role:
+        type: string
+      salary:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
 info:
   contact: {}
-paths: {}
+paths:
+  /opening:
+    post:
+      consumes:
+      - application/json
+      description: Create a new job opening
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/openings.CreateOpeningResponse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/openings.CreateOpeningResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/openings.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/openings.ErrorResponse'
+      summary: Create opening
+      tags:
+      - Openings
 swagger: "2.0"
